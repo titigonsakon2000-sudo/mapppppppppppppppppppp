@@ -1,0 +1,2447 @@
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #030712;
+            overflow: hidden;
+            /* ป้องกันการเลื่อนหน้าจอหลัก */
+        }
+
+        .glass-panel {
+
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            width: 330px;
+
+            height: calc(100vh - 30px);
+
+            z-index: 5000;
+
+            border-radius: 28px;
+
+            background:
+                rgba(10, 15, 25, 0.58);
+
+            backdrop-filter:
+                blur(18px);
+
+            border:
+                1px solid rgba(0, 255, 153, 0.15);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45);
+
+            overflow: hidden;
+        }
+        
+
+        .radar-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .radar-1 {
+            width: 160px;
+            height: 160px;
+            border: 1px dashed rgba(0, 255, 153, 0.15);
+            animation: spin-ring 20s linear infinite;
+        }
+
+        .radar-2 {
+            width: 128px;
+            height: 128px;
+            border: 1px solid rgba(0, 255, 153, 0.2);
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+
+        .radar-3 {
+            width: 96px;
+            height: 96px;
+            border: 2px dotted rgba(0, 255, 153, 0.3);
+            animation: spin-ring-reverse 15s linear infinite;
+        }
+
+        .radar-4 {
+            width: 64px;
+            height: 64px;
+            border: 1px dashed rgba(0, 255, 153, 0.4);
+            animation: spin-ring 8s linear infinite;
+        }
+
+        @keyframes spin-ring {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes spin-ring-reverse {
+            0% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+        }
+
+        @keyframes pulse-ring {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                opacity: 0.3;
+            }
+        }
+
+        .logo-box {
+            animation: float-logo 4s ease-in-out infinite;
+        }
+
+        @keyframes float-logo {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 0 10px rgba(0, 255, 153, 0.6));
+            }
+
+            50% {
+                transform: translateY(-8px);
+                filter: drop-shadow(0 0 20px rgba(0, 255, 153, 1));
+            }
+        }
+
+.queue-item-neon {
+
+    height: 54px;
+
+    min-height: 54px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(15,23,42,0.78);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    padding: 0 10px;
+
+    margin-bottom: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    transition:
+        all 0.18s ease;
+}
+
+.queue-item-neon:hover {
+
+    border-color:
+        rgba(0,255,153,0.2);
+
+    background:
+        rgba(20,30,50,0.9);
+}
+
+        @keyframes slide-in-right {
+            0% {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        #village-stats-panel {
+
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 290px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(10, 15, 25, 0.58);
+
+            backdrop-filter:
+                blur(18px);
+
+            border:
+                1px solid rgba(0, 240, 255, 0.15);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45);
+
+            z-index: 5000;
+        }
+
+        #village-stats-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2) !important;
+        }
+
+        .map-crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 32px;
+            height: 32px;
+            margin-left: -16px;
+            margin-top: -16px;
+            z-index: 2000;
+            pointer-events: none;
+            animation: crosshair-breathe 2s infinite ease-in-out;
+        }
+
+        .map-crosshair::before,
+        .map-crosshair::after {
+            content: '';
+            position: absolute;
+            background: #00ff99;
+            box-shadow: 0 0 10px #00ff99;
+        }
+
+        .map-crosshair::before {
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+        }
+
+        .map-crosshair::after {
+            left: 15px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+        }
+
+        @keyframes crosshair-breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+        }
+
+        .neon-text-green {
+            color: #fff;
+            text-shadow: 0 0 5px #00ff99, 0 0 12px rgba(0, 255, 153, 0.6);
+        }
+
+        .neon-text-amber {
+            color: #fff;
+            text-shadow: 0 0 5px #f59e0b, 0 0 12px rgba(245, 158, 11, 0.6);
+        }
+
+        .neon-text-cyan {
+            text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+        }
+
+        .neon-text-emerald {
+            text-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+        }
+
+        .btn-neon-start {
+            background: rgba(0, 255, 153, 0.1);
+            border: 2px solid #00ff99;
+            color: #00ff99;
+            text-shadow: 0 0 4px rgba(0, 255, 153, 0.6);
+            animation: neon-pulse-emerald 2.5s infinite ease-in-out;
+            transition: all 0.3s;
+        }
+
+        .btn-neon-start:hover {
+            background: #00ff99;
+            color: #030712;
+            box-shadow: 0 0 25px #00ff99;
+            text-shadow: none;
+            transform: scale(1.02);
+        }
+
+        @keyframes neon-pulse-emerald {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(0, 255, 153, 0.4), inset 0 0 5px rgba(0, 255, 153, 0.2);
+                border-color: rgba(0, 255, 153, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 22px rgba(0, 255, 153, 0.85), inset 0 0 12px rgba(0, 255, 153, 0.4);
+                border-color: rgba(0, 255, 153, 1);
+            }
+        }
+
+        .neon-input:focus {
+            border-color: #00ff99 !important;
+            box-shadow: 0 0 12px rgba(0, 255, 153, 0.4) !important;
+            transform: scale(1.01);
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #00ff99, #3b82f6);
+            border-radius: 10px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #00ff99;
+            box-shadow: 0 0 8px #00ff99;
+        }
+
+        #resizer:hover {
+            background: #00ff99;
+            box-shadow: 0 0 10px #00ff99;
+        }
+
+        body.resizing {
+            cursor: col-resize;
+            user-select: none;
+        }
+
+        .grid-collapsed {
+            grid-template-rows: 0fr !important;
+            margin-top: 0 !important;
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
+        .leaflet-routing-container {
+            display: none !important;
+        }
+
+        .house-number-label {
+            background: rgba(5, 10, 20, 0.9) !important;
+            backdrop-filter: blur(4px) !important;
+            border: 1.5px solid #00ff99 !important;
+            border-radius: 6px !important;
+            color: #ffffff !important;
+            font-weight: 900 !important;
+            font-size: 13px !important;
+            padding: 3px 10px !important;
+            white-space: nowrap !important;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.5) !important;
+            text-shadow: 0 0 3px rgba(0, 255, 153, 0.5) !important;
+
+            pointer-events: none !important;
+
+            margin-bottom: 8px !important;
+        }
+
+        @keyframes map-pop {
+            0% {
+                transform: scale(0);
+            }
+
+            80% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .house-number-label:hover {
+            transform: scale(1.15) translateY(-5px);
+            border-color: #34d399 !important;
+            box-shadow: 0 10px 25px rgba(52, 211, 153, 0.8) !important;
+        }
+
+        .leaflet-tooltip-top:before,
+        .leaflet-tooltip-bottom:before {
+            display: none !important;
+        }
+
+        .sortable-ghost {
+            opacity: 0.3;
+            background: #00ff99 !important;
+            border-color: #00ff99 !important;
+            transform: scale(0.95);
+        }
+
+        body.hide-map-labels .toggleable-label-text {
+            display: none !important;
+        }
+
+        .leaflet-bar {
+            border: none !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .leaflet-bar a {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-bottom: 1px solid #334155 !important;
+        }
+
+        .leaflet-bar a:hover {
+            background-color: #334155 !important;
+            color: #fff !important;
+        }
+
+        .delivery-hidden {
+            display: none !important;
+        }
+
+        #mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .leaflet-control-zoom {
+            margin-bottom: 20px !important;
+        }
+
+        .gps-user-dot {
+            background-color: #3b82f6;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+            animation: pulse-gps 1.5s infinite ease-out;
+        }
+
+        @keyframes pulse-gps {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.3);
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.6);
+        }
+
+        .premium-swal-popup {
+
+            border-radius: 34px !important;
+
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.55),
+                0 0 60px rgba(0, 255, 200, 0.08) !important;
+
+            backdrop-filter: blur(18px);
+        }
+
+        .premium-swal-btn {
+
+            min-height: 64px;
+
+            min-width: 180px;
+
+            border: none;
+
+            border-radius: 18px;
+
+            background: linear-gradient(135deg,
+                    #00d2a0,
+                    #00d9ff) !important;
+
+            color: #041b1b !important;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 0 35px rgba(0, 255, 200, 0.35);
+
+            transition: 0.25s ease;
+        }
+
+        .premium-swal-btn:hover {
+
+            transform: translateY(-2px) scale(1.02);
+
+            box-shadow:
+                0 0 45px rgba(0, 255, 220, 0.45);
+        }
+
+        #top-left-queue-panel {
+            pointer-events: auto !important;
+            z-index: 999999 !important;
+        }
+
+        #top-left-queue-panel * {
+            pointer-events: auto !important;
+        }
+
+        .leaflet-pane,
+        .leaflet-control,
+        .leaflet-top,
+        .leaflet-bottom {
+            pointer-events: auto;
+        }
+
+        /* ให้ panel คิวกดได้ */
+        #top-left-queue-panel {
+            pointer-events: auto !important;
+            z-index: 999999 !important;
+        }
+
+        /* ให้ item ข้างในกดได้ */
+        #queue-items-container,
+        #queue-items-container * {
+            pointer-events: auto !important;
+        }
+
+        /* =========================
+   LUXURY GPS MARKER
+========================= */
+
+        .lux-marker {
+
+            position: relative;
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transform:
+                translate(-17px, -34px);
+
+            animation:
+                markerFloat 2s ease-in-out infinite;
+        }
+
+
+        /* =========================
+   ICON
+========================= */
+
+        .lux-icon {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 34px;
+            height: 34px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            background:
+                linear-gradient(135deg,
+                    #00ffb3,
+                    #00d9ff);
+
+            box-shadow:
+                0 0 10px rgba(0, 255, 179, 0.8),
+                0 0 25px rgba(0, 217, 255, 0.6),
+                inset 0 0 10px rgba(255, 255, 255, 0.5);
+
+            border:
+                2px solid rgba(255, 255, 255, 0.8);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+        /* =========================
+   DELIVERY PIN
+========================= */
+
+        .delivery-pin {
+
+            position: relative;
+
+            width: 26px;
+            height: 26px;
+
+            transform:
+                rotate(-45deg);
+
+            border-radius:
+                50% 50% 50% 0;
+
+            border:
+                2px solid rgba(255, 255, 255, 0.95);
+
+            will-change:
+                transform;
+
+            backdrop-filter:
+                blur(18px);
+
+            z-index: 10;
+        }
+
+
+        /* =========================
+   INNER DOT
+========================= */
+
+        .delivery-pin::after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            background: #fff;
+
+            border-radius: 50%;
+
+            top: 7px;
+            left: 7px;
+
+            box-shadow:
+                0 0 10px #fff;
+        }
+
+
+        /* =========================
+   CURRENT
+========================= */
+
+        .delivery-pin.current {
+
+            background:
+                linear-gradient(135deg,
+                    #009dff,
+                    #006cff);
+
+            box-shadow:
+                0 0 12px #009dff,
+                0 0 24px rgba(0, 157, 255, 0.5);
+        }
+
+
+        /* =========================
+   NEXT
+========================= */
+
+        .delivery-pin.next {
+
+            background:
+                linear-gradient(135deg,
+                    #009dff,
+                    #006cff);
+
+            box-shadow:
+                0 0 12px #009dff,
+                0 0 24px rgba(0, 157, 255, 0.5);
+        }
+
+
+        /* =========================
+   DONE
+========================= */
+
+        .delivery-pin.done {
+
+            background:
+                linear-gradient(135deg,
+                    #22c55e,
+                    #15803d);
+
+            box-shadow:
+                0 0 12px #22c55e,
+                0 0 24px rgba(34, 197, 94, 0.6);
+        }
+
+
+        /* =========================
+   PULSE RING
+========================= */
+
+        .pin-pulse {
+
+            position: absolute;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 50%;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            animation:
+                pulseRing 2s infinite;
+
+            z-index: 1;
+        }
+
+
+        .pin-pulse.current {
+
+            border:
+                1.5px solid rgba(0, 157, 255, 0.5);
+        }
+
+        .pin-pulse.next {
+
+            border:
+                1.5px solid rgba(0, 157, 255, 0.5);
+        }
+
+        .pin-pulse.done {
+
+            border:
+                1.5px solid rgba(0, 255, 153, 0.8);
+
+            box-shadow:
+                0 0 25px rgba(0, 255, 153, 0.5);
+        }
+
+
+        /* =========================
+   FLOAT
+========================= */
+
+        @keyframes floatPin {
+
+            0% {
+
+                transform:
+                    rotate(-45deg) translate3d(0, 0px, 0);
+            }
+
+            50% {
+
+                transform:
+                    rotate(-45deg) translate3d(0, -5px, 0);
+            }
+
+            100% {
+
+                transform:
+                    rotate(-45deg) translate3d(0, 0px, 0);
+            }
+        }
+
+
+        /* =========================
+   PULSE
+========================= */
+
+        @keyframes pulseRing {
+
+            0% {
+
+                transform:
+                    translate(-50%, -50%) scale(0.6);
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translate(-50%, -50%) scale(2);
+
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+   PIN LABEL
+========================= */
+
+        .pin-label {
+
+            position: absolute;
+
+            top: -28px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            padding:
+                4px 10px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(5, 10, 20, 0.92);
+
+            border:
+                1.5px solid rgba(0, 255, 255, 0.45);
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 0 12px rgba(0, 255, 255, 0.25);
+
+            animation:
+                floatLabel 2s ease-in-out infinite;
+        }
+
+
+        /* =========================
+   LABEL CURRENT
+========================= */
+
+        .pin-label.current {
+
+            border:
+                1.5px solid rgba(0, 157, 255, 0.7);
+
+            box-shadow:
+                0 0 12px rgba(0, 157, 255, 0.4);
+        }
+
+
+        /* =========================
+   LABEL NEXT
+========================= */
+
+        .pin-label.next {
+
+            border:
+                1.5px solid rgba(0, 157, 255, 0.7);
+
+            box-shadow:
+                0 0 12px rgba(0, 157, 255, 0.4);
+        }
+
+
+        /* =========================
+   LABEL DONE
+========================= */
+
+        .pin-label.done {
+
+            border:
+                1.5px solid rgba(0, 255, 102, 0.7);
+
+            box-shadow:
+                0 0 12px rgba(0, 255, 102, 0.4);
+        }
+
+
+        /* =========================
+   LABEL NUMBER
+========================= */
+
+        .pin-label .num {
+
+            color:
+                #00e5ff;
+
+            font-weight:
+                900;
+
+            margin-left:
+                4px;
+        }
+
+
+        /* =========================
+   FLOAT LABEL
+========================= */
+
+        @keyframes floatLabel {
+
+            0% {
+
+                transform:
+                    translateX(-50%) translateY(0px);
+            }
+
+            50% {
+
+                transform:
+                    translateX(-50%) translateY(-3px);
+            }
+
+            100% {
+
+                transform:
+                    translateX(-50%) translateY(0px);
+            }
+        }
+
+        /* =========================
+   PIN WRAPPER FLOAT
+========================= */
+
+        .pin-wrapper {
+
+            animation:
+                smoothFloat 2.8s ease-in-out infinite;
+
+            will-change:
+                transform;
+        }
+
+
+        /* =========================
+   SMOOTH FLOAT
+========================= */
+
+        @keyframes smoothFloat {
+
+            0% {
+
+                transform:
+                    translateY(0px);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-6px);
+            }
+
+            100% {
+
+                transform:
+                    translateY(0px);
+            }
+        }
+
+        /* =========================
+   NORMAL HOUSE PIN
+========================= */
+
+        .normal-pin {
+
+            width: 28px;
+            height: 28px;
+
+            background:
+                linear-gradient(135deg,
+                    #00ff99,
+                    #00ffcc);
+
+            border-radius:
+                50% 50% 50% 0;
+
+            transform:
+                rotate(-45deg);
+
+            border:
+                2px solid white;
+
+            box-shadow:
+                0 0 10px rgba(0, 255, 140, 0.7);
+        }
+
+
+        /* remove leaflet bg */
+
+        .normal-house-marker {
+
+            background: transparent !important;
+
+            border: none !important;
+        }
+
+        /* =========================
+   NEON CYBER POPUP
+========================= */
+
+        .cyber-popup {
+
+            position: relative;
+
+            min-width: 170px;
+
+            padding:
+                12px;
+
+            border-radius:
+                18px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(5, 10, 20, 0.96),
+                    rgba(0, 15, 35, 0.92));
+
+            border:
+                1px solid rgba(0, 255, 200, 0.18);
+
+            backdrop-filter:
+                blur(18px);
+
+            overflow: hidden;
+
+            box-shadow:
+                0 0 18px rgba(0, 255, 180, 0.12);
+
+            color: white;
+        }
+
+
+        /* =========================
+   GLOW BORDER
+========================= */
+
+        .cyber-popup::before {
+
+            content: '';
+
+            position: absolute;
+
+            inset: 0;
+
+            border-radius: inherit;
+
+            border:
+                1px solid rgba(0, 255, 180, 0.25);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+   TITLE
+========================= */
+
+        .popup-title {
+
+            text-align: center;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            line-height: 1.2;
+
+            color: white;
+
+            text-shadow:
+                0 0 8px rgba(255, 255, 255, 0.45);
+
+            margin-bottom: 2px;
+        }
+
+
+        /* =========================
+   SUB
+========================= */
+
+        .popup-village {
+
+            text-align: center;
+
+            color:
+                #7e93ad;
+
+            font-size: 11px;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+   BUTTON AREA
+========================= */
+
+        .popup-actions {
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        /* =========================
+   BUTTON
+========================= */
+
+        .popup-btn {
+
+            position: relative;
+
+            flex: 1;
+
+            border: none;
+
+            padding:
+                9px;
+
+            border-radius:
+                12px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
+            transition:
+                all 0.25s ease;
+
+            color: white;
+        }
+
+
+        /* =========================
+   BUTTON HOVER
+========================= */
+
+        .popup-btn:hover {
+
+            transform:
+                translateY(-3px) scale(1.03);
+
+            filter:
+                brightness(1.15);
+        }
+
+
+        /* =========================
+   MAP BUTTON
+========================= */
+
+        .map-btn {
+
+            background:
+                linear-gradient(135deg,
+                    #0066ff,
+                    #00a2ff);
+
+            box-shadow:
+                0 0 18px rgba(0, 162, 255, 0.45);
+        }
+
+
+        /* =========================
+   ADD BUTTON
+========================= */
+
+        .add-btn {
+
+            background:
+                linear-gradient(135deg,
+                    #00ff99,
+                    #00d26a);
+
+            box-shadow:
+                0 0 18px rgba(0, 255, 140, 0.4);
+        }
+
+
+        /* =========================
+   CLOSE
+========================= */
+
+        .popup-close {
+
+            position: absolute;
+
+            top: 10px;
+            right: 12px;
+
+            border: none;
+
+            background: transparent;
+
+            color:
+                rgba(255, 255, 255, 0.45);
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            transition:
+                all 0.25s ease;
+        }
+
+        .popup-close:hover {
+
+            color: #ff4d6d;
+
+            transform:
+                rotate(90deg) scale(1.1);
+        }
+
+
+        /* =========================
+   POPUP OPEN
+========================= */
+
+        @keyframes popupFade {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px) scale(0.92);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0px) scale(1);
+            }
+        }
+
+
+        /* =========================
+   BORDER ANIMATION
+========================= */
+
+        @keyframes borderGlow {
+
+            0% {
+
+                filter:
+                    hue-rotate(0deg);
+            }
+
+            100% {
+
+                filter:
+                    hue-rotate(360deg);
+            }
+        }
+
+
+        /* =========================
+   REMOVE LEAFLET WHITE BG
+========================= */
+
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+
+            background:
+                transparent !important;
+
+            box-shadow:
+                none !important;
+        }
+
+        /* =========================
+/* =========================
+FLOATING CYBER MODE
+========================= */
+
+        .village-floating-mode {
+
+            width: 72px !important;
+
+            height: 72px !important;
+
+            padding: 0 !important;
+
+            border-radius: 22px !important;
+
+            overflow: hidden;
+
+            display: flex !important;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(0, 18, 30, 0.96),
+                    rgba(0, 8, 18, 0.98)) !important;
+
+            border:
+                1px solid rgba(0, 255, 200, 0.18) !important;
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 0 28px rgba(0, 255, 200, 0.18),
+                inset 0 0 18px rgba(0, 255, 200, 0.05);
+
+            animation:
+                cyberFloat 3s ease-in-out infinite;
+        }
+
+
+        /* HEADER */
+
+        .village-floating-mode .group {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center !important;
+
+            margin: 0 !important;
+        }
+
+
+        /* BUTTON */
+
+        .village-floating-mode .group>div {
+
+            width: auto !important;
+
+            min-width: 54px;
+
+            height: 54px !important;
+
+            padding:
+                0 16px;
+
+            border-radius: 18px !important;
+
+            background:
+                rgba(0, 255, 255, 0.04);
+
+            border:
+                1px solid rgba(0, 255, 255, 0.15);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        /* GLOW */
+
+        .village-floating-mode .group>div::before {
+
+            content: '';
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                radial-gradient(circle,
+                    rgba(0, 255, 255, 0.18),
+                    transparent 70%);
+
+            animation:
+                pulseGlow 2s infinite;
+        }
+
+
+        /* ICON */
+
+        .village-floating-mode #toggle-icon {
+
+            font-size: 20px !important;
+
+            color:
+                #00f0ff;
+
+            text-shadow:
+                0 0 12px rgba(0, 240, 255, 0.9);
+
+            z-index: 2;
+        }
+
+
+        /* HOVER */
+
+        .village-floating-mode:hover {
+
+            transform:
+                scale(1.08);
+
+            box-shadow:
+                0 0 42px rgba(0, 255, 200, 0.28);
+        }
+
+
+        /* FLOAT */
+
+        @keyframes cyberFloat {
+
+            0% {
+
+                transform:
+                    translateY(0px);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-4px);
+            }
+
+            100% {
+
+                transform:
+                    translateY(0px);
+            }
+        }
+
+
+        /* PULSE */
+
+        @keyframes pulseGlow {
+
+            0% {
+
+                transform: scale(1);
+
+                opacity: 0.7;
+            }
+
+            70% {
+
+                transform: scale(1.25);
+
+                opacity: 0;
+            }
+
+            100% {
+
+                transform: scale(1.25);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+MINI TEXT
+========================= */
+
+        .mini-widget-content {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            z-index: 2;
+        }
+
+
+        .mini-widget-text {
+
+            color:
+                #00f0ff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            text-shadow:
+                0 0 10px rgba(0, 240, 255, 0.5);
+
+            white-space: nowrap;
+        }
+
+        /* =========================
+VILLAGE PANEL
+========================= */
+
+        #village-stats-panel {
+
+            background:
+                linear-gradient(145deg,
+                    rgba(5, 10, 18, 0.96),
+                    rgba(0, 15, 30, 0.92));
+
+            border:
+                1px solid rgba(0, 255, 200, 0.22);
+
+            box-shadow:
+                0 0 25px rgba(0, 255, 200, 0.12);
+
+            backdrop-filter:
+                blur(18px);
+
+            overflow: hidden;
+
+            transition:
+                all 0.35s ease;
+        }
+
+
+        /* =========================
+FLOAT BUTTON
+========================= */
+
+        #village-floating-btn {
+
+            box-shadow:
+                0 0 20px rgba(0, 255, 255, 0.10),
+                inset 0 0 12px rgba(0, 255, 255, 0.03);
+
+            animation:
+                villageFloat 3s ease-in-out infinite;
+
+            overflow: hidden;
+        }
+
+
+        /* hover */
+
+        #village-floating-btn:hover {
+
+            transform:
+                translateY(-2px) scale(1.02);
+
+            border-color:
+                rgba(0, 255, 255, 0.35);
+
+            box-shadow:
+                0 0 30px rgba(0, 255, 255, 0.18);
+        }
+
+
+        /* text glow */
+
+        #village-floating-btn span {
+
+            text-shadow:
+                0 0 10px rgba(0, 255, 255, 0.18);
+        }
+
+
+        /* icon glow */
+
+        #village-floating-btn i {
+
+            text-shadow:
+                0 0 10px rgba(0, 255, 255, 0.35);
+        }
+
+
+        /* float */
+
+        @keyframes villageFloat {
+
+            0% {
+
+                transform:
+                    translateY(0px);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-3px);
+            }
+
+            100% {
+
+                transform:
+                    translateY(0px);
+            }
+        }
+
+        /* =========================
+PANEL MOTION
+========================= */
+
+        #village-stats-panel {
+
+            transform-origin:
+                top right;
+
+            transition:
+                transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 180ms ease,
+                filter 180ms ease;
+
+            will-change:
+                transform,
+                opacity;
+        }
+
+
+        /* hide */
+
+        .village-panel-hide {
+
+            opacity: 0;
+
+            transform:
+                scale(0.96) translateY(-6px);
+
+            filter:
+                blur(2px);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+FLOAT BUTTON
+========================= */
+
+        #village-floating-btn {
+
+            transition:
+                transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 180ms ease;
+
+            will-change:
+                transform,
+                opacity;
+        }
+
+
+        /* hidden */
+
+        .village-float-hide {
+
+            opacity: 0;
+
+            transform:
+                scale(0.88);
+
+            pointer-events: none;
+        }
+
+
+        /* show */
+
+        .village-float-show {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+
+
+        /* hover */
+
+        #village-floating-btn:hover {
+
+            transform:
+                scale(1.04);
+
+            box-shadow:
+                0 0 28px rgba(0, 255, 255, 0.16);
+        }
+
+        /* =========================
+NEON SCAN
+========================= */
+
+        #village-floating-btn::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -40%;
+
+            left: -120%;
+
+            width: 80%;
+
+            height: 180%;
+
+            background:
+                linear-gradient(90deg,
+                    transparent,
+                    rgba(0, 255, 255, 0.18),
+                    transparent);
+
+            transform:
+                rotate(18deg);
+
+            animation:
+                neonScan 3s linear infinite;
+        }
+
+
+        @keyframes neonScan {
+
+            0% {
+
+                left: -120%;
+            }
+
+            100% {
+
+                left: 160%;
+            }
+        }
+
+        /* =========================
+PANEL ANIMATION
+========================= */
+
+        #village-stats-panel {
+
+            transition:
+                all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+
+            transform-origin:
+                top right;
+        }
+
+
+        /* panel hide */
+
+        .village-panel-hide {
+
+            opacity: 0;
+
+            transform:
+                scale(0.96) translateY(-6px);
+
+            filter:
+                blur(2px);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+FLOAT BUTTON
+========================= */
+
+        #village-floating-btn {
+
+            transition:
+                all 220ms cubic-bezier(0.22, 1, 0.36, 1);
+
+            transform-origin:
+                top right;
+        }
+
+
+        /* hide */
+
+        .village-float-hide {
+
+            opacity: 0;
+
+            transform:
+                scale(0.88);
+
+            pointer-events: none;
+        }
+
+
+        /* show */
+
+        .village-float-show {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+
+        /* =========================
+PANEL
+========================= */
+
+        #village-stats-panel {
+
+            transition:
+                opacity 180ms ease,
+                transform 180ms ease;
+
+            transform-origin:
+                top right;
+        }
+
+
+        /* hide panel */
+
+        .village-panel-hide {
+
+            opacity: 0;
+
+            transform:
+                scale(0.96) translateY(-6px);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+FLOAT BUTTON
+========================= */
+
+        #village-floating-btn {
+
+            transition:
+                opacity 180ms ease,
+                transform 180ms ease;
+
+            transform-origin:
+                top right;
+        }
+
+
+        /* hide */
+
+        .village-float-hide {
+
+            opacity: 0;
+
+            transform:
+                scale(0.9);
+
+            pointer-events: none;
+        }
+
+
+        /* show */
+
+        .village-float-show {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+
+        /* =========================
+MOBILE RESPONSIVE
+========================= */
+
+        @media (max-width: 768px) {
+
+            /* =========================
+    VILLAGE PANEL
+    ========================= */
+
+            #village-stats-panel {
+
+                top: 10px !important;
+
+                right: 10px !important;
+
+                left: 10px !important;
+
+                width: auto !important;
+
+                max-width: unset !important;
+
+                border-radius: 20px !important;
+
+                padding: 12px !important;
+
+                backdrop-filter:
+                    blur(18px);
+
+                box-shadow:
+                    0 0 25px rgba(0, 255, 255, 0.14);
+            }
+
+
+            /* =========================
+    HEADER
+    ========================= */
+
+            #village-stats-panel h2 {
+
+                font-size: 13px !important;
+
+                gap: 8px;
+            }
+
+
+            /* =========================
+    TOGGLE BUTTON
+    ========================= */
+
+            #village-stats-panel button {
+
+                min-width: 42px;
+
+                min-height: 42px;
+
+                border-radius: 14px;
+            }
+
+
+            /* =========================
+    LIST AREA
+    ========================= */
+
+            #village-stats-list {
+
+                max-height: 58vh;
+
+                overflow-y: auto;
+
+                padding-right: 4px;
+            }
+
+
+            /* =========================
+    LIST ITEM
+    ========================= */
+
+            #village-stats-list>div {
+
+                padding:
+                    12px 10px !important;
+
+                border-radius:
+                    14px !important;
+            }
+
+
+            /* village name */
+
+            #village-stats-list span,
+            #village-stats-list div {
+
+                font-size: 13px !important;
+            }
+
+
+            /* =========================
+    NUMBER BADGE
+    ========================= */
+
+            #village-stats-list .village-count {
+
+                min-width: 42px;
+
+                height: 28px;
+
+                font-size: 12px;
+
+                border-radius: 999px;
+            }
+
+
+            /* =========================
+    SHOW ALL BUTTON
+    ========================= */
+
+            #village-stats-panel .show-all-btn {
+
+                height: 44px;
+
+                font-size: 13px;
+
+                border-radius: 14px;
+            }
+
+
+            /* =========================
+    FLOAT BUTTON
+    ========================= */
+
+            #village-floating-btn {
+
+                top: 12px !important;
+
+                right: 12px !important;
+
+                height: 48px !important;
+
+                padding:
+                    0 14px !important;
+
+                border-radius:
+                    16px !important;
+            }
+
+
+            /* floating text */
+
+            #village-floating-btn span {
+
+                font-size: 12px !important;
+            }
+
+
+            /* floating icon */
+
+            #village-floating-btn i {
+
+                font-size: 13px !important;
+            }
+        }
+
+        /* =========================
+FINAL MOBILE FULL FIX
+========================= */
+
+        @media (max-width: 768px) {
+
+            html,
+            body {
+
+                width: 100% !important;
+                max-width: 100% !important;
+
+                overflow-x: hidden !important;
+            }
+
+            body {
+
+                position: fixed;
+                inset: 0;
+
+                height: 100dvh;
+            }
+
+            /* =========================
+    SIDEBAR
+    ========================= */
+
+            #main-sidebar,
+            .glass-panel {
+
+                width: 100vw !important;
+
+                min-width: 100vw !important;
+
+                max-width: 100vw !important;
+
+                height: 100dvh !important;
+
+                border-radius: 0 !important;
+
+                overflow-x: hidden !important;
+            }
+
+            /* =========================
+    MAP
+    ========================= */
+
+            #map {
+
+                width: 100vw !important;
+
+                height: 100dvh !important;
+            }
+
+            /* =========================
+    FLEX FIX
+    ========================= */
+
+            .flex {
+
+                min-width: 0 !important;
+            }
+
+            /* =========================
+    INPUT BUTTON
+    ========================= */
+
+            input,
+            select,
+            button {
+
+                max-width: 100% !important;
+            }
+
+            /* =========================
+    REMOVE OVERFLOW
+    ========================= */
+
+            * {
+
+                box-sizing: border-box;
+            }
+        }
+
+        .panel-hidden {
+
+            transform:
+                translateY(120%);
+
+            opacity: 0;
+        }
+
+        /* =========================
+FULLSCREEN MAP
+========================= */
+
+        #map {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            z-index: 1;
+        }
+
+        /* =========================
+TOP APP BAR
+========================= */
+
+        #top-app-bar {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 420px;
+
+            height: 60px;
+
+            z-index: 6000;
+
+            border-radius: 24px;
+
+            background:
+                rgba(5, 10, 20, 0.78);
+
+            backdrop-filter:
+                blur(20px);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 20px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        .top-logo {
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            color: #00ff99;
+        }
+
+        .top-status {
+
+            font-size: 12px;
+
+            color: #00ff99;
+
+            background:
+                rgba(0, 255, 153, 0.12);
+
+            padding:
+                6px 14px;
+
+            border-radius: 999px;
+        }
+
+        .top-logo {
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            color: #00ff99;
+        }
+
+        .top-status {
+
+            font-size: 12px;
+
+            color: #00ff99;
+
+            background:
+                rgba(0, 255, 153, 0.12);
+
+            padding:
+                6px 14px;
+
+            border-radius: 999px;
+        }
+
+        button,
+        input,
+        select {
+
+            border-radius: 14px !important;
+        }
+
+        #queue-search:focus {
+
+            border-color: #00ff99;
+
+            box-shadow:
+                0 0 15px rgba(0, 255, 153, 0.35);
+        }
+
+        #village-stats-panel {
+
+            transition:
+                all 0.25s ease;
+        }
+
+        #queue-search {
+
+    height: 40px;
+
+    font-size: 12px;
+
+    border-radius: 12px;
+}
+
+/* =========================
+SIDEBAR TOGGLE
+========================= */
+
+#sidebar-toggle-btn {
+
+    position: fixed;
+
+    top: 14px;
+
+    left: 14px;
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    z-index: 999999;
+
+    background:
+        rgba(15,23,42,0.92);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    color: #cbd5e1;
+
+    font-size: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+
+    transition:
+        all 0.25s ease;
+}
+
+#sidebar-toggle-btn:hover {
+
+    background:
+        rgba(30,41,59,0.95);
+
+    color: #00ff99;
+
+    transform:
+        scale(1.05);
+}
+
+/* =========================
+CURRENT HOUSE FLOAT CARD
+========================= */
+
+#current-house-card {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 26px;
+
+    transform: translateX(-50%);
+
+    width: 280px;
+
+    min-height: 88px;
+
+    padding: 14px 18px;
+
+    border-radius: 24px;
+
+    z-index: 99999;
+
+    background:
+        rgba(10,15,25,0.78);
+
+    backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid rgba(0,255,153,0.15);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    transition:
+        all 0.25s ease;
+}
+
+/* TOP */
+
+.current-house-top {
+
+    color: #00ff99;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 5px;
+}
+
+/* HOUSE NAME */
+
+#current-house-name {
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: 0.3px;
+}
+
+/* DISTANCE */
+
+#current-house-distance {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
