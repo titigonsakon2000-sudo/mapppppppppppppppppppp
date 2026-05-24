@@ -7,6 +7,8 @@
             /* ป้องกันการเลื่อนหน้าจอหลัก */
         }
 
+
+        
         .glass-panel {
 
             position: absolute;
@@ -2444,4 +2446,126 @@ CURRENT HOUSE FLOAT CARD
     font-size: 12px;
 
     margin-top: 3px;
+}
+
+/* =========================
+MOBILE RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+
+    /* =========================
+    BODY
+    ========================= */
+
+    body{
+
+        background:#000;
+    }
+
+    /* =========================
+    SIDEBAR
+    ========================= */
+
+    .glass-panel{
+
+        width: calc(100vw - 24px) !important;
+
+        height: calc(100dvh - 24px) !important;
+
+        top: 12px !important;
+
+        left: 12px !important;
+
+        border-radius: 24px !important;
+
+        transform:
+            translateX(-105%) !important;
+
+        transition:
+            transform 0.45s ease;
+    }
+
+    .glass-panel.mobile-open{
+
+        transform:
+            translateX(0%) !important;
+    }
+
+    /* =========================
+    MAP
+    ========================= */
+
+    #map{
+
+        filter:
+            saturate(1.05)
+            contrast(1.02);
+    }
+
+    .map-crosshair{
+
+        transform:
+            scale(0.8);
+    }
+
+    /* =========================
+    MAP CONTROLS
+    ========================= */
+
+    .leaflet-bottom.leaflet-right{
+
+        right: 10px !important;
+
+        bottom: 85px !important;
+    }
+
+    .leaflet-control a{
+
+        width: 42px !important;
+
+        height: 42px !important;
+
+        font-size: 14px !important;
+
+        border-radius: 14px !important;
+    }
+
+    .leaflet-control-zoom a{
+
+        width: 42px !important;
+
+        height: 42px !important;
+    }
+
+    /* =========================
+    VILLAGE PANEL
+    ========================= */
+
+    #village-stats-panel{
+
+        width: auto !important;
+
+        min-width: 125px;
+
+        padding: 10px 14px !important;
+
+        border-radius: 20px !important;
+    }
+
+    #village-stats-panel h2{
+
+        font-size: 12px !important;
+    }
+
+    /* =========================
+    MOBILE MENU
+    ========================= */
+
+    #btn-mobile-menu{
+
+        top: 14px !important;
+
+        left: 14px !important;
+    }
 }

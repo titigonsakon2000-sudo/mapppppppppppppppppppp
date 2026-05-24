@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="text-slate-200 h-screen w-full overflow-hidden flex relative">
+<body class="text-slate-200 h-[100dvh] w-full overflow-hidden flex relative">
 
     <div id="delivery-loader-overlay"
         class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-slate-950/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500">
@@ -54,7 +54,7 @@
     <div id="mobile-overlay" onclick="toggleMobileMenu()" class="md:hidden"></div>
 
     <aside id="main-sidebar"
-        class="glass-panel fixed h-full flex flex-col shrink-0 z-[2001] md:z-[1001] transition-transform duration-300 transform -translate-x-full md:translate-x-0 w-[85%] sm:w-[320px] md:w-[360px] md:min-w-[280px]">
+        class="glass-panel fixed h-full flex flex-col shrink-0 z-[2001] md:z-[1001] transition-all duration-500 ease-out transform -translate-x-full md:translate-x-0 w-[85%] sm:w-[320px] md:w-[360px] md:min-w-[280px]">
 
         <button onclick="toggleMobileMenu()"
             class="md:hidden absolute top-4 right-4 text-slate-400 hover:text-white z-50 bg-slate-800/80 w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center">

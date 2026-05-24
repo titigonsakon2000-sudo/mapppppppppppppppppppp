@@ -4,10 +4,10 @@ function toggleMobileMenu() {
     const overlay = document.getElementById("mobile-overlay");
 
     if (sidebar.classList.contains("-translate-x-full")) {
-        sidebar.classList.remove("-translate-x-full");
+        sidebar.classList.add("mobile-open");
         overlay.classList.add("active");
     } else {
-        sidebar.classList.add("-translate-x-full");
+        sidebar.classList.remove("mobile-open");
         overlay.classList.remove("active");
     }
 }
@@ -42,7 +42,17 @@ function stopResize() {
 }
 
 // --- ตั้งค่าระบบแผนที่ ---
-const map = L.map("map", { zoomControl: false }).setView([14.41, 101.7], 13);
+const map = L.map(
+    "map",
+    {
+        zoomControl: false
+    }
+).setView(
+    [14.41, 101.7],
+    window.innerWidth < 768
+        ? 11
+        : 13
+);
 
 const streetLayer = L.tileLayer(
     "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
@@ -343,8 +353,10 @@ gap-1
         title="ซ่อนชื่อ"
 
         class="
-        w-10
-        h-10
+        w-11
+h-11
+md:w-10
+md:h-10
         flex
         items-center
         justify-center
@@ -365,8 +377,10 @@ gap-1
         title="GPS"
 
         class="
-        w-10
-        h-10
+        w-11
+h-11
+md:w-10
+md:h-10
         flex
         items-center
         justify-center
@@ -386,8 +400,10 @@ gap-1
         title="Google Maps"
 
         class="
-        w-10
-        h-10
+        w-11
+h-11
+md:w-10
+md:h-10
         flex
         items-center
         justify-center
