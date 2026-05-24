@@ -1,14 +1,54 @@
 // --- ฟังก์ชันควบคุมเมนูบนมือถือ (Hamburger) ---
 function toggleMobileMenu() {
-    const sidebar = document.getElementById("main-sidebar");
-    const overlay = document.getElementById("mobile-overlay");
 
-    if (sidebar.classList.contains("-translate-x-full")) {
-        sidebar.classList.add("mobile-open");
-        overlay.classList.add("active");
-    } else {
-        sidebar.classList.remove("mobile-open");
-        overlay.classList.remove("active");
+    const sidebar =
+        document.getElementById(
+            "main-sidebar"
+        );
+
+    const overlay =
+        document.getElementById(
+            "mobile-overlay"
+        );
+
+    // =========================
+    // OPEN
+    // =========================
+
+    if (
+        !sidebar.classList.contains(
+            "mobile-open"
+        )
+    ) {
+
+        sidebar.classList.add(
+            "mobile-open"
+        );
+
+        overlay?.classList.add(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+    }
+
+    // =========================
+    // CLOSE
+    // =========================
+
+    else {
+
+        sidebar.classList.remove(
+            "mobile-open"
+        );
+
+        overlay?.classList.remove(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "";
     }
 }
 

@@ -3,7 +3,7 @@
         body {
             font-family: 'Kanit', sans-serif;
             background-color: #030712;
-            overflow: hidden;
+            overflow: visible;
             /* ป้องกันการเลื่อนหน้าจอหลัก */
         }
 
@@ -36,7 +36,7 @@
             box-shadow:
                 0 20px 60px rgba(0, 0, 0, 0.45);
 
-            overflow: hidden;
+            overflow: visible;
         }
         
 
@@ -1057,7 +1057,7 @@
             backdrop-filter:
                 blur(18px);
 
-            overflow: hidden;
+            overflow: visible;
 
             box-shadow:
                 0 0 18px rgba(0, 255, 180, 0.12);
@@ -1163,7 +1163,7 @@
 
             cursor: pointer;
 
-            overflow: hidden;
+            overflow: visible;
 
             transition:
                 all 0.25s ease;
@@ -1326,7 +1326,7 @@ FLOATING CYBER MODE
 
             border-radius: 22px !important;
 
-            overflow: hidden;
+            overflow: visible;
 
             display: flex !important;
 
@@ -1403,7 +1403,7 @@ FLOATING CYBER MODE
 
             position: relative;
 
-            overflow: hidden;
+            overflow: visible;
         }
 
         /* GLOW */
@@ -1562,7 +1562,7 @@ VILLAGE PANEL
             backdrop-filter:
                 blur(18px);
 
-            overflow: hidden;
+            overflow: visible;
 
             transition:
                 all 0.35s ease;
@@ -1582,7 +1582,7 @@ FLOAT BUTTON
             animation:
                 villageFloat 3s ease-in-out infinite;
 
-            overflow: hidden;
+            overflow: visible;
         }
 
 
@@ -2621,5 +2621,38 @@ IPHONE CLOSE FIX
 
         transform:
             translateX(0%) !important;
+    }
+}
+
+/* =========================
+IPHONE CLOSE BUTTON FIX
+========================= */
+
+@media (max-width:768px){
+
+    #close-mobile-menu{
+
+        position: absolute !important;
+
+        top: 14px !important;
+
+        right: 14px !important;
+
+        z-index: 999999999 !important;
+
+        pointer-events: auto !important;
+
+        touch-action: manipulation !important;
+
+        -webkit-tap-highlight-color: transparent;
+
+        transform: translateZ(0);
+    }
+
+    #main-sidebar{
+
+        overflow-y: auto;
+
+        overflow-x: visible !important;
     }
 }
