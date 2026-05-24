@@ -2593,3 +2593,18 @@ IPHONE CLOSE BUTTON FIX
             transparent;
     }
 }
+
+/* =========================
+IPHONE CLOSE FIX
+========================= */
+
+@media (max-width:768px){
+
+    #close-mobile-menu{
+
+        touch-action: manipulation;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+}

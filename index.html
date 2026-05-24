@@ -54,12 +54,57 @@
     <div id="mobile-overlay" onclick="toggleMobileMenu()" class="md:hidden"></div>
 
     <aside id="main-sidebar"
-        class="glass-panel fixed h-full flex flex-col shrink-0 z-[2001] md:z-[1001] transition-all duration-500 ease-out transform -translate-x-full md:translate-x-0 w-[85%] sm:w-[320px] md:w-[360px] md:min-w-[280px]">
 
-        <button onclick="toggleMobileMenu()"
-            class="md:hidden absolute top-4 right-4 text-slate-400 hover:text-white z-50 bg-slate-800/80 w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center">
-            <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
+    
+        class="glass-panel fixed h-full flex flex-col shrink-0 z-[2001] md:z-[1001] transition-transform duration-300 transform -translate-x-full md:translate-x-0 w-[85%] sm:w-[320px] md:w-[360px] md:min-w-[280px]">
+
+
+        
+        <button
+
+    id="close-mobile-menu"
+
+    onclick="toggleMobileMenu()"
+
+    class="
+        md:hidden
+
+        absolute
+
+        top-[max(16px,env(safe-area-inset-top))]
+        right-4
+
+        z-[999999]
+
+        w-[52px]
+        h-[52px]
+
+        rounded-2xl
+
+        bg-[#111827]/95
+
+        border
+        border-white/10
+
+        backdrop-blur-xl
+
+        flex
+        items-center
+        justify-center
+
+        text-slate-300
+        hover:text-white
+
+        active:scale-95
+
+        transition-all
+        duration-300
+    "
+>
+
+    <i class="fa-solid fa-xmark text-[20px]"></i>
+
+</button>
 
         <div
             class="relative p-6 flex flex-col items-center justify-center border-b border-emerald-500/20 bg-[#070b16]/60 overflow-hidden shrink-0">
@@ -83,50 +128,9 @@
 
         <div class="px-3 mt-3 shrink-0">
             <button onclick="validateAndStartDelivery()"
-                <button
-    id="close-mobile-menu"
-
-    onclick="toggleMobileMenu()"
-
-    class="
-    md:hidden
-
-    absolute
-
-    top-4
-    right-4
-
-    z-[999999]
-
-    w-[52px]
-    h-[52px]
-
-    rounded-2xl
-
-    bg-[#111827]/95
-
-    border
-    border-white/10
-
-    backdrop-blur-xl
-
-    flex
-    items-center
-    justify-center
-
-    text-slate-300
-    hover:text-white
-
-    active:scale-95
-
-    transition-all
-    duration-300
-    "
->
-
-    <i class="fa-solid fa-xmark text-[20px]"></i>
-
-</button>
+                class="w-full btn-neon-start font-bold py-2.5 rounded-md text-sm tracking-wide flex items-center justify-center gap-2 cursor-pointer shadow-lg">
+                <i class="fa-solid fa-truck-fast"></i> เริ่มการส่งของ (เต็มจอ)
+            </button>
         </div>
 
         <div class="flex-1 flex flex-col min-h-0 gap-3 mt-3 px-3 pb-4">
