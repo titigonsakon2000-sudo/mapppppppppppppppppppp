@@ -11,33 +11,16 @@ function toggleMobileMenu() {
             "mobile-overlay"
         );
 
-    // =========================
-    // OPEN
-    // =========================
-
-    if (
-        !sidebar.classList.contains(
-            "mobile-open"
-        )
-    ) {
-
-        sidebar.classList.add(
+    const isOpen =
+        sidebar.classList.contains(
             "mobile-open"
         );
-
-        overlay?.classList.add(
-            "active"
-        );
-
-        document.body.style.overflow =
-            "hidden";
-    }
 
     // =========================
     // CLOSE
     // =========================
 
-    else {
+    if (isOpen) {
 
         sidebar.classList.remove(
             "mobile-open"
@@ -49,6 +32,24 @@ function toggleMobileMenu() {
 
         document.body.style.overflow =
             "";
+    }
+
+    // =========================
+    // OPEN
+    // =========================
+
+    else {
+
+        sidebar.classList.add(
+            "mobile-open"
+        );
+
+        overlay?.classList.add(
+            "active"
+        );
+
+        document.body.style.overflow =
+            "hidden";
     }
 }
 
