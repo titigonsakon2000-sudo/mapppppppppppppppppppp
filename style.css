@@ -2608,3 +2608,18 @@ IPHONE CLOSE FIX
             transparent;
     }
 }
+
+@media (max-width:768px){
+
+    .glass-panel{
+
+        transform:
+            translateX(-105%) !important;
+    }
+
+    .glass-panel.mobile-open{
+
+        transform:
+            translateX(0%) !important;
+    }
+}
