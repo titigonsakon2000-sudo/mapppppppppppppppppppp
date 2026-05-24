@@ -2569,3 +2569,27 @@ MOBILE RESPONSIVE
         left: 14px !important;
     }
 }
+
+/* =========================
+IPHONE CLOSE BUTTON FIX
+========================= */
+
+@media (max-width:768px){
+
+    #close-mobile-menu{
+
+        top:
+            max(
+                16px,
+                env(safe-area-inset-top)
+            ) !important;
+
+        right: 16px !important;
+
+        touch-action:
+            manipulation;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+}

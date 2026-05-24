@@ -83,9 +83,50 @@
 
         <div class="px-3 mt-3 shrink-0">
             <button onclick="validateAndStartDelivery()"
-                class="w-full btn-neon-start font-bold py-2.5 rounded-md text-sm tracking-wide flex items-center justify-center gap-2 cursor-pointer shadow-lg">
-                <i class="fa-solid fa-truck-fast"></i> เริ่มการส่งของ (เต็มจอ)
-            </button>
+                <button
+    id="close-mobile-menu"
+
+    onclick="toggleMobileMenu()"
+
+    class="
+    md:hidden
+
+    absolute
+
+    top-4
+    right-4
+
+    z-[999999]
+
+    w-[52px]
+    h-[52px]
+
+    rounded-2xl
+
+    bg-[#111827]/95
+
+    border
+    border-white/10
+
+    backdrop-blur-xl
+
+    flex
+    items-center
+    justify-center
+
+    text-slate-300
+    hover:text-white
+
+    active:scale-95
+
+    transition-all
+    duration-300
+    "
+>
+
+    <i class="fa-solid fa-xmark text-[20px]"></i>
+
+</button>
         </div>
 
         <div class="flex-1 flex flex-col min-h-0 gap-3 mt-3 px-3 pb-4">
