@@ -8,7 +8,7 @@
         }
 
 
-        
+
         .glass-panel {
 
             position: absolute;
@@ -38,7 +38,7 @@
 
             overflow: visible;
         }
-        
+
 
         .radar-ring {
             position: absolute;
@@ -128,19 +128,19 @@
             }
         }
 
-.queue-item-neon {
+        .queue-item-neon {
 
-    height: 54px;
+    height: 46px;
 
-    min-height: 54px;
+    min-height: 46px;
 
     border-radius: 12px;
 
     background:
-        rgba(15,23,42,0.78);
+        rgba(15, 23, 42, 0.78);
 
     border:
-        1px solid rgba(255,255,255,0.05);
+        1px solid rgba(255, 255, 255, 0.05);
 
     padding: 0 10px;
 
@@ -156,14 +156,14 @@
         all 0.18s ease;
 }
 
-.queue-item-neon:hover {
+        .queue-item-neon:hover {
 
-    border-color:
-        rgba(0,255,153,0.2);
+            border-color:
+                rgba(0, 255, 153, 0.2);
 
-    background:
-        rgba(20,30,50,0.9);
-}
+            background:
+                rgba(20, 30, 50, 0.9);
+        }
 
         @keyframes slide-in-right {
             0% {
@@ -312,23 +312,52 @@
             transform: scale(1.01);
         }
 
-        .custom-scroll::-webkit-scrollbar {
-            width: 4px;
-        }
+        /* =========================
+SMOOTH SCROLLBAR
+========================= */
 
-        .custom-scroll::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.3);
-        }
+/* ซ่อนเฉพาะ quick results */
 
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #00ff99, #3b82f6);
-            border-radius: 10px;
-        }
+#quick-results-columns::-webkit-scrollbar {
 
-        .custom-scroll::-webkit-scrollbar-thumb:hover {
-            background: #00ff99;
-            box-shadow: 0 0 8px #00ff99;
-        }
+    display: none;
+}
+
+#quick-results-columns {
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+
+    background: transparent;
+
+    border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+
+    background: #00d9ff;
+
+    border-radius: 999px;
+
+    border: none;
+
+    box-shadow: none !important;
+
+    transition: none !important;
+
+    animation: none !important;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+
+    background: #00d9ff;
+
+    box-shadow: none !important;
+}
 
         #resizer:hover {
             background: #00ff99;
@@ -415,6 +444,7 @@
             color: #cbd5e1 !important;
             border-bottom: 1px solid #334155 !important;
         }
+        
 
         .leaflet-bar a:hover {
             background-color: #334155 !important;
@@ -2293,461 +2323,616 @@ TOP APP BAR
 
         #queue-search {
 
-    height: 40px;
+            height: 40px;
 
-    font-size: 12px;
+            font-size: 12px;
 
-    border-radius: 12px;
-}
+            border-radius: 12px;
+        }
 
-/* =========================
+        /* =========================
 SIDEBAR TOGGLE
 ========================= */
 
-#sidebar-toggle-btn {
+        #sidebar-toggle-btn {
 
-    position: fixed;
+            position: fixed;
 
-    top: 14px;
+            top: 14px;
 
-    left: 14px;
+            left: 14px;
 
-    width: 42px;
+            width: 42px;
 
-    height: 42px;
+            height: 42px;
 
-    border-radius: 12px;
+            border-radius: 12px;
 
-    z-index: 999999;
+            z-index: 999999;
 
-    background:
-        rgba(15,23,42,0.92);
+            background:
+                rgba(15, 23, 42, 0.92);
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
 
-    color: #cbd5e1;
+            color: #cbd5e1;
 
-    font-size: 16px;
+            font-size: 16px;
 
-    display: flex;
+            display: flex;
 
-    align-items: center;
+            align-items: center;
 
-    justify-content: center;
+            justify-content: center;
 
-    backdrop-filter:
-        blur(12px);
+            backdrop-filter:
+                blur(12px);
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.35);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.35);
 
-    transition:
-        all 0.25s ease;
-}
+            transition:
+                all 0.25s ease;
+        }
 
-#sidebar-toggle-btn:hover {
+        #sidebar-toggle-btn:hover {
 
-    background:
-        rgba(30,41,59,0.95);
+            background:
+                rgba(30, 41, 59, 0.95);
 
-    color: #00ff99;
+            color: #00ff99;
 
-    transform:
-        scale(1.05);
-}
+            transform:
+                scale(1.05);
+        }
 
-/* =========================
+        /* =========================
 CURRENT HOUSE FLOAT CARD
 ========================= */
 
-#current-house-card {
+        #current-house-card {
 
-    position: absolute;
+            position: absolute;
 
-    left: 50%;
+            left: 50%;
 
-    bottom: 26px;
+            bottom: 26px;
 
-    transform: translateX(-50%);
+            transform: translateX(-50%);
 
-    width: 280px;
+            width: 280px;
 
-    min-height: 88px;
+            min-height: 88px;
 
-    padding: 14px 18px;
+            padding: 14px 18px;
 
-    border-radius: 24px;
+            border-radius: 24px;
 
-    z-index: 99999;
+            z-index: 99999;
 
-    background:
-        rgba(10,15,25,0.78);
+            background:
+                rgba(10, 15, 25, 0.78);
 
-    backdrop-filter:
-        blur(18px);
+            backdrop-filter:
+                blur(18px);
 
-    border:
-        1px solid rgba(0,255,153,0.15);
+            border:
+                1px solid rgba(0, 255, 153, 0.15);
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.45);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45);
 
-    display: flex;
+            display: flex;
 
-    flex-direction: column;
+            flex-direction: column;
 
-    justify-content: center;
+            justify-content: center;
 
-    transition:
-        all 0.25s ease;
-}
+            transition:
+                all 0.25s ease;
+        }
 
-/* TOP */
+        /* TOP */
 
-.current-house-top {
+        .current-house-top {
 
-    color: #00ff99;
+            color: #00ff99;
 
-    font-size: 11px;
+            font-size: 11px;
 
-    font-weight: 700;
+            font-weight: 700;
 
-    display: flex;
+            display: flex;
 
-    align-items: center;
+            align-items: center;
 
-    gap: 6px;
+            gap: 6px;
 
-    margin-bottom: 5px;
-}
+            margin-bottom: 5px;
+        }
 
-/* HOUSE NAME */
+        /* HOUSE NAME */
 
-#current-house-name {
+        #current-house-name {
 
-    color: white;
+            color: white;
 
-    font-size: 19px;
+            font-size: 19px;
 
-    font-weight: 800;
+            font-weight: 800;
 
-    line-height: 1.2;
+            line-height: 1.2;
 
-    letter-spacing: 0.3px;
-}
+            letter-spacing: 0.3px;
+        }
 
-/* DISTANCE */
+        /* DISTANCE */
 
-#current-house-distance {
+        #current-house-distance {
 
-    color: #94a3b8;
+            color: #94a3b8;
 
-    font-size: 12px;
+            font-size: 12px;
 
-    margin-top: 3px;
-}
+            margin-top: 3px;
+        }
 
-/* =========================
+        /* =========================
 MOBILE RESPONSIVE
 ========================= */
 
-@media (max-width:768px){
+        @media (max-width:768px) {
 
-    /* =========================
+            /* =========================
     BODY
     ========================= */
 
-    body{
+            body {
 
-        background:#000;
-    }
+                background: #000;
+            }
 
-    /* =========================
+            /* =========================
     SIDEBAR
     ========================= */
 
-    .glass-panel{
+            .glass-panel {
 
-        width: calc(100vw - 24px) !important;
+                width: calc(100vw - 24px) !important;
 
-        height: calc(100dvh - 24px) !important;
+                height: calc(100dvh - 24px) !important;
 
-        top: 12px !important;
+                top: 12px !important;
 
-        left: 12px !important;
+                left: 12px !important;
 
-        border-radius: 24px !important;
+                border-radius: 24px !important;
 
-        transform:
-            translateX(-105%) !important;
+                transform:
+                    translateX(-105%) !important;
 
-        transition:
-            transform 0.45s ease;
-    }
+                transition:
+                    transform 0.45s ease;
+            }
 
-    .glass-panel.mobile-open{
+            .glass-panel.mobile-open {
 
-        transform:
-            translateX(0%) !important;
-    }
+                transform:
+                    translateX(0%) !important;
+            }
 
-    /* =========================
+            /* =========================
     MAP
     ========================= */
 
-    #map{
+            #map {
 
-        filter:
-            saturate(1.05)
-            contrast(1.02);
-    }
+                filter:
+                    saturate(1.05) contrast(1.02);
+            }
 
-    .map-crosshair{
+            .map-crosshair {
 
-        transform:
-            scale(0.8);
-    }
+                transform:
+                    scale(0.8);
+            }
 
-    /* =========================
+            /* =========================
     MAP CONTROLS
     ========================= */
 
-    .leaflet-bottom.leaflet-right{
+            /* =========================
+MOBILE MAP CONTROLS FIX
+========================= */
 
-        right: 10px !important;
+            @media (max-width:768px) {
 
-        bottom: 85px !important;
-    }
+                .leaflet-bottom.leaflet-right {
 
-    .leaflet-control a{
+                    right: 10px !important;
 
-        width: 42px !important;
+                    bottom: 110px !important;
 
-        height: 42px !important;
+                    display: flex !important;
 
-        font-size: 14px !important;
+                    flex-direction: column !important;
 
-        border-radius: 14px !important;
-    }
+                    gap: 10px !important;
 
-    .leaflet-control-zoom a{
+                    z-index: 9999 !important;
+                }
 
-        width: 42px !important;
+                .leaflet-control-container {
 
-        height: 42px !important;
-    }
+                    overflow: visible !important;
+                }
 
-    /* =========================
+                .leaflet-control {
+
+                    overflow: visible !important;
+
+                    margin: 0 !important;
+                }
+
+                .leaflet-bar {
+
+                    border-radius: 18px !important;
+
+                    overflow: hidden !important;
+
+                    box-shadow:
+                        0 8px 24px rgba(0, 0, 0, 0.35) !important;
+                }
+
+                .leaflet-control a {
+
+                    width: 46px !important;
+
+                    height: 46px !important;
+
+                    line-height: 46px !important;
+                }
+            }
+
+            .leaflet-control a {
+
+                width: 46px !important;
+
+                height: 46px !important;
+
+                line-height: 46px !important;
+            }
+
+            .leaflet-control-zoom a {
+
+                width: 42px !important;
+
+                height: 42px !important;
+            }
+
+            /* =========================
     VILLAGE PANEL
     ========================= */
 
-    #village-stats-panel{
+            #village-stats-panel {
 
-        width: auto !important;
+                width: auto !important;
 
-        min-width: 125px;
+                min-width: 125px;
 
-        padding: 10px 14px !important;
+                padding: 10px 14px !important;
 
-        border-radius: 20px !important;
-    }
+                border-radius: 20px !important;
+            }
 
-    #village-stats-panel h2{
+            #village-stats-panel h2 {
 
-        font-size: 12px !important;
-    }
+                font-size: 12px !important;
+            }
 
-    /* =========================
+            /* =========================
     MOBILE MENU
     ========================= */
 
-    #btn-mobile-menu{
+            #btn-mobile-menu {
 
-        top: 14px !important;
+                top: 14px !important;
 
-        left: 14px !important;
-    }
-}
+                left: 14px !important;
+            }
+        }
 
-/* =========================
+        /* =========================
 IPHONE CLOSE BUTTON FIX
 ========================= */
 
-@media (max-width:768px){
+        @media (max-width:768px) {
 
-    #close-mobile-menu{
+            #close-mobile-menu {
 
-        top:
-            max(
-                16px,
-                env(safe-area-inset-top)
-            ) !important;
+                top:
+                    max(16px,
+                        env(safe-area-inset-top)) !important;
 
-        right: 16px !important;
+                right: 16px !important;
 
-        touch-action:
-            manipulation;
+                touch-action:
+                    manipulation;
 
-        -webkit-tap-highlight-color:
-            transparent;
-    }
-}
+                -webkit-tap-highlight-color:
+                    transparent;
+            }
+        }
 
-/* =========================
+        /* =========================
 IPHONE CLOSE FIX
 ========================= */
 
-@media (max-width:768px){
+        @media (max-width:768px) {
 
-    #close-mobile-menu{
+            #close-mobile-menu {
 
-        touch-action: manipulation;
+                touch-action: manipulation;
 
-        -webkit-tap-highlight-color:
-            transparent;
-    }
-}
+                -webkit-tap-highlight-color:
+                    transparent;
+            }
+        }
 
-@media (max-width:768px){
+        @media (max-width:768px) {
 
-    .glass-panel{
+            .glass-panel {
 
-        transform:
-            translateX(-105%) !important;
-    }
+                transform:
+                    translateX(-105%) !important;
+            }
 
-    .glass-panel.mobile-open{
+            .glass-panel.mobile-open {
 
-        transform:
-            translateX(0%) !important;
-    }
-}
+                transform:
+                    translateX(0%) !important;
+            }
+        }
 
-/* =========================
+        /* =========================
 IPHONE CLOSE BUTTON FIX
 ========================= */
 
-@media (max-width:768px){
+        @media (max-width:768px) {
 
-    #close-mobile-menu{
+            #close-mobile-menu {
 
-        position: absolute !important;
+                position: absolute !important;
 
-        top: 14px !important;
+                top: 14px !important;
 
-        right: 14px !important;
+                right: 14px !important;
 
-        z-index: 999999999 !important;
+                z-index: 999999999 !important;
 
-        pointer-events: auto !important;
+                pointer-events: auto !important;
 
-        touch-action: manipulation !important;
+                touch-action: manipulation !important;
 
-        -webkit-tap-highlight-color: transparent;
+                -webkit-tap-highlight-color: transparent;
 
-        transform: translateZ(0);
-    }
+                transform: translateZ(0);
+            }
 
-    #main-sidebar{
+            #main-sidebar {
 
-        overflow-y: auto;
+                overflow-y: auto;
 
-        overflow-x: visible !important;
-    }
-}
+                overflow-x: visible !important;
+            }
+        }
 
-/* =========================
+        /* =========================
 IPHONE TOUCH FIX
 ========================= */
 
-@media (max-width:768px){
+        @media (max-width:768px) {
 
-    /* =========================
+            /* =========================
     SIDEBAR
     ========================= */
 
-    #main-sidebar{
+            #main-sidebar {
 
-        position: fixed !important;
+                position: fixed !important;
 
-        z-index: 999999 !important;
+                z-index: 999999 !important;
 
-        pointer-events: auto !important;
+                pointer-events: auto !important;
 
-        overflow-y: auto !important;
+                overflow-y: auto !important;
 
-        overflow-x: hidden !important;
+                overflow-x: hidden !important;
 
-        -webkit-overflow-scrolling: touch;
+                -webkit-overflow-scrolling: touch;
 
-        transform: translate3d(
-            -105%,
-            0,
-            0
-        );
-    }
+                transform: translate3d(-105%,
+                        0,
+                        0);
+            }
 
-    #main-sidebar.mobile-open{
+            #main-sidebar.mobile-open {
 
-        transform: translate3d(
-            0,
-            0,
-            0
-        ) !important;
-    }
+                transform: translate3d(0,
+                        0,
+                        0) !important;
+            }
 
-    /* =========================
+            /* =========================
     CLOSE BUTTON
     ========================= */
 
-    #close-mobile-menu{
+            #close-mobile-menu {
 
-        position: fixed !important;
+                position: fixed !important;
 
-        top: 22px !important;
+                top: 22px !important;
 
-        right: 22px !important;
+                right: 22px !important;
 
-        width: 56px !important;
+                width: 56px !important;
 
-        height: 56px !important;
+                height: 56px !important;
 
-        z-index: 999999999 !important;
+                z-index: 999999999 !important;
 
-        pointer-events: auto !important;
+                pointer-events: auto !important;
 
-        touch-action: manipulation !important;
+                touch-action: manipulation !important;
 
-        -webkit-tap-highlight-color:
-            transparent !important;
+                -webkit-tap-highlight-color:
+                    transparent !important;
 
-        transform: translateZ(0);
+                transform: translateZ(0);
 
-        background:
-            rgba(15,23,42,0.96) !important;
+                background:
+                    rgba(15, 23, 42, 0.96) !important;
 
-        backdrop-filter:
-            blur(20px);
+                backdrop-filter:
+                    blur(20px);
 
-        border:
-            1px solid rgba(255,255,255,0.08);
-    }
+                border:
+                    1px solid rgba(255, 255, 255, 0.08);
+            }
 
-    /* =========================
+            /* =========================
     MAP BLOCK TOUCH
     ========================= */
 
-    #map{
+            #map {
 
-        z-index: 1 !important;
-    }
+                z-index: 1 !important;
+            }
 
-    .leaflet-pane,
-    .leaflet-control,
-    .leaflet-top,
-    .leaflet-bottom{
+            .leaflet-pane,
+            .leaflet-control,
+            .leaflet-top,
+            .leaflet-bottom {
 
-        z-index: 1 !important;
-    }
+                z-index: 1 !important;
+            }
+        }
+
+        /* =========================
+MATCH ZOOM STYLE
+========================= */
+
+        .leaflet-control-zoom {
+
+            border: none !important;
+
+            background: transparent !important;
+
+            box-shadow: none !important;
+        }
+
+        .leaflet-control-zoom a {
+
+            width: 40px !important;
+
+            height: 40px !important;
+
+            display: flex !important;
+
+            align-items: center !important;
+
+            justify-content: center !important;
+
+            background:
+                rgba(17, 24, 39, 0.90) !important;
+
+            backdrop-filter:
+                blur(20px);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08) !important;
+
+            color: white !important;
+
+            font-size: 20px !important;
+
+            transition: all 0.25s ease;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.35);
+
+            margin-bottom: 2px;
+        }
+
+        /* TOP BUTTON */
+
+        .leaflet-control-zoom-in {
+
+            border-radius:
+                16px 16px 0 0 !important;
+        }
+
+        /* BOTTOM BUTTON */
+
+        .leaflet-control-zoom-out {
+
+            border-radius:
+                0 0 16px 16px !important;
+        }
+
+        /* HOVER */
+
+        .leaflet-control-zoom a:hover {
+
+            background:
+                rgba(30, 41, 59, 0.98) !important;
+
+            color:
+                #00ff99 !important;
+        }
+
+        /* =========================
+SCROLL FLICKER FIX
+========================= */
+
+.custom-scroll {
+
+    transform: translateZ(0);
+
+    will-change: scroll-position;
+
+    backface-visibility: hidden;
+
+    contain: paint;
+}
+
+/* ปิด repaint */
+
+.custom-scroll * {
+
+    backface-visibility: hidden;
+}
+
+/* card ด้านใน */
+
+.custom-scroll li,
+.custom-scroll .queue-item-neon,
+.custom-scroll .group {
+
+    transform: translateZ(0);
+}
+
+/* ซ่อน scrollbar เฉพาะรายการบ้าน */
+
+#quick-results-columns::-webkit-scrollbar {
+
+    display: none;
+}
+
+#quick-results-columns {
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
 }

@@ -113,54 +113,174 @@ L.control.zoom({ position: "bottomright" }).addTo(map);
 let isBaseLabelsHidden = false;
 
 window.toggleMapLabels = function () {
-    isBaseLabelsHidden = !isBaseLabelsHidden;
 
-    const btn = document.getElementById("btn-toggle-labels");
+    isBaseLabelsHidden =
+        !isBaseLabelsHidden;
+
+    const btn =
+        document.getElementById(
+            "btn-toggle-labels"
+        );
 
     // =========================
-    // panel ด้านใน
-    // =========================
-
-    const panelContent = document.getElementById("delivery-panel-content");
-
-    // =========================
-    // ซ่อน
+    // ซ่อนทั้งหมด
     // =========================
 
     if (isBaseLabelsHidden) {
-        // ซ่อน panel
-        if (panelContent) {
-            panelContent.style.display = "none";
+
+        // -------------------------
+        // ซ่อนบ้าน
+        // -------------------------
+
+        if (
+            typeof markersLayer !==
+            "undefined"
+        ) {
+
+            map.removeLayer(
+                markersLayer
+            );
         }
 
-        // ซ่อน label บ้าน
-        document.querySelectorAll(".toggleable-label-text").forEach((el) => {
-            el.style.display = "none";
+        // -------------------------
+        // ซ่อน village labels
+        // -------------------------
+
+        if (
+            typeof villageLabelLayer !==
+            "undefined"
+        ) {
+
+            map.removeLayer(
+                villageLabelLayer
+            );
+        }
+
+        // -------------------------
+        // ซ่อน tooltip / labels
+        // -------------------------
+
+        document.body.classList.add(
+            "hide-map-labels"
+        );
+
+        // -------------------------
+        // เปลี่ยนเป็น satellite ล้วน
+        // -------------------------
+
+        map.eachLayer((layer) => {
+
+            if (
+                layer instanceof
+                L.TileLayer
+            ) {
+
+                map.removeLayer(
+                    layer
+                );
+            }
         });
 
-        // เปลี่ยน icon
+        L.tileLayer(
+
+            "https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+
+            {
+
+                maxZoom: 22,
+
+                subdomains: [
+                    "mt0",
+                    "mt1",
+                    "mt2",
+                    "mt3"
+                ]
+            }
+
+        ).addTo(map);
+
+        // -------------------------
+        // icon
+        // -------------------------
+
         if (btn) {
-            btn.innerHTML = '<i class="fa-solid fa-eye text-[14px]"></i>';
+
+            btn.innerHTML =
+                '<i class="fa-solid fa-eye text-[14px]"></i>';
         }
     }
 
     // =========================
-    // แสดง
+    // แสดงทั้งหมด
     // =========================
+
     else {
-        // แสดง panel
-        if (panelContent) {
-            panelContent.style.display = "block";
+
+        // -------------------------
+        // แสดงบ้าน
+        // -------------------------
+
+        if (
+            typeof markersLayer !==
+            "undefined"
+        ) {
+
+            map.addLayer(
+                markersLayer
+            );
         }
 
-        // แสดง label บ้าน
-        document.querySelectorAll(".toggleable-label-text").forEach((el) => {
-            el.style.display = "block";
+        // -------------------------
+        // แสดง labels
+        // -------------------------
+
+        document.body.classList.remove(
+            "hide-map-labels"
+        );
+
+        // -------------------------
+        // กลับ hybrid
+        // -------------------------
+
+        map.eachLayer((layer) => {
+
+            if (
+                layer instanceof
+                L.TileLayer
+            ) {
+
+                map.removeLayer(
+                    layer
+                );
+            }
         });
 
-        // เปลี่ยน icon
+        L.tileLayer(
+
+            "https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+
+            {
+
+                maxZoom: 22,
+
+                subdomains: [
+                    "mt0",
+                    "mt1",
+                    "mt2",
+                    "mt3"
+                ]
+            }
+
+        ).addTo(map);
+
+        // -------------------------
+        // icon
+        // -------------------------
+
         if (btn) {
-            btn.innerHTML = '<i class="fa-solid fa-eye-slash text-[14px]"></i>';
+
+            btn.innerHTML =
+                '<i class="fa-solid fa-eye-slash text-[14px]"></i>';
         }
     }
 };
@@ -361,31 +481,44 @@ window.toggleGPSTracking = function () {
 };
 
 const CustomMapControls = L.Control.extend({
-    options: { position: "bottomright" },
+
+    options: {
+        position: "bottomright"
+    },
+
     onAdd: function (map) {
-        const container = L.DomUtil.create(
-            "div",
-            "leaflet-bar leaflet-control flex flex-col gap-0.5 mb-2",
-        );
+
+        const container =
+            L.DomUtil.create(
+                "div",
+                "leaflet-control flex flex-col gap-0 mb-[18px]"
+            );
+
         container.style.border = "none";
+
         container.style.boxShadow = "none";
-        container.style.backgroundColor = "transparent";
+
+        container.style.backgroundColor =
+            "transparent";
 
         container.innerHTML = `
 
 <div class="
+custom-map-group
 bg-[#111827]/90
-backdrop-blur-xl
+backdrop-blur-sm
 border
 border-white/10
-rounded-2xl
+rounded-[18px]
 overflow-hidden
 shadow-2xl
 flex
 flex-col
-p-1
-gap-1
+p-0
+gap-0
 ">
+
+    <!-- TOGGLE LABEL -->
 
     <a
         href="#"
@@ -394,10 +527,10 @@ gap-1
         title="ซ่อนชื่อ"
 
         class="
-        w-11
-h-11
-md:w-10
-md:h-10
+        w-[46px]
+h-[46px]
+        md:w-10
+        md:h-10
         flex
         items-center
         justify-center
@@ -405,11 +538,13 @@ md:h-10
         hover:text-white
         hover:bg-slate-700
         transition-all
-        rounded-xl
+        rounded-t-[18px]
         "
     >
         <i class="fa-solid fa-eye-slash"></i>
     </a>
+
+    <!-- GPS -->
 
     <a
         href="#"
@@ -418,10 +553,10 @@ md:h-10
         title="GPS"
 
         class="
-        w-11
-h-11
-md:w-10
-md:h-10
+        w-[46px]
+h-[46px]
+        md:w-10
+        md:h-10
         flex
         items-center
         justify-center
@@ -429,22 +564,31 @@ md:h-10
         hover:text-white
         hover:bg-slate-700
         transition-all
-        rounded-xl
+        rounded-none
         "
     >
         <i class="fa-solid fa-location-crosshairs"></i>
     </a>
 
+    <!-- GOOGLE MAPS -->
+
     <a
         href="#"
-        onclick="openGoogleMaps(map.getCenter().lat, map.getCenter().lng); return false;"
+        onclick="
+            openGoogleMaps(
+                map.getCenter().lat,
+                map.getCenter().lng
+            );
+            return false;
+        "
+
         title="Google Maps"
 
         class="
-        w-11
-h-11
-md:w-10
-md:h-10
+        w-[46px]
+h-[46px]
+        md:w-10
+        md:h-10
         flex
         items-center
         justify-center
@@ -452,17 +596,20 @@ md:h-10
         hover:text-white
         hover:bg-slate-700
         transition-all
-        rounded-xl
+        rounded-b-[18px]
         "
     >
-        <i class="fa-solid fa-map-location-dot text-[10px]"></i>
+        <i class="fa-solid fa-map-location-dot text-[14px]"></i>
+    </a>
 
 </div>
 `;
+
         return container;
-    },
+    }
 });
-map.addControl(new CustomMapControls());
+
+new CustomMapControls().addTo(map);
 
 function toggleMapLayer() {
     const thumbImg = document.getElementById("layer-thumb-img");
@@ -1954,7 +2101,7 @@ function filterByVillage() {
             .map(
                 (h) => `
                     <div class="flex justify-between items-center bg-slate-900/60 p-2 rounded border border-slate-800 mb-1 hover:border-emerald-500/50 hover:bg-slate-800 transition-all hover:translate-x-1">
-                        <span class="font-bold text-[12px] text-white">${h.id}</span>
+                        <span class="font-bold text-[14px] text-white">${h.id}</span>
 
                         <div class="flex gap-1">
 
@@ -2138,7 +2285,7 @@ function updateVillageStats() {
 
             <span class="
                 text-slate-300
-                text-[12px]
+                text-[14px]
                 font-medium
                 group-hover:text-white
                 transition-colors
@@ -3749,6 +3896,50 @@ document.getElementById("queue-search")?.addEventListener("input", function () {
         item.style.display = text.includes(keyword) ? "flex" : "none";
     });
 });
+
+const queueSearchInput =
+    document.getElementById(
+        "queue-search"
+    );
+
+if (queueSearchInput) {
+
+    queueSearchInput.addEventListener(
+        "input",
+        function () {
+
+            const keyword =
+                this.value
+                .trim()
+                .toLowerCase();
+
+            const items =
+                document.querySelectorAll(
+                    "#queue-list li"
+                );
+
+            items.forEach((item) => {
+
+                const text =
+                    item.innerText
+                    .toLowerCase();
+
+                if (
+                    text.includes(keyword)
+                ) {
+
+                    item.style.display =
+                        "";
+
+                } else {
+
+                    item.style.display =
+                        "none";
+                }
+            });
+        }
+    );
+}
 
 // =========================
 // CURRENT HOUSE CARD

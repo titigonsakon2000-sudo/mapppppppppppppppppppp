@@ -170,65 +170,190 @@
             </div>
 
             <div class="flex-1 flex flex-col min-h-0">
-                <div class="flex items-center justify-between mb-1.5 shrink-0 px-1">
-                    <h3 class="text-[13px] font-bold text-white flex items-center gap-2 neon-text-amber">
-                        <i class="fa-solid fa-clipboard-list text-amber-500"></i> คิวจัดส่ง
-                    </h3>
-                    <div class="flex gap-1">
-                        <button onclick="optimizeNow()"
-                            class="p-1.5 text-cyan-400 hover:bg-cyan-950/40 rounded transition-all"
-                            title="จัดเรียงเส้นทาง">
 
-                            <i class="fa-solid fa-route text-xs"></i>
+    <!-- HEADER -->
 
-                        </button>
-                        <button onclick="reverseQueueDirection()"
-                            class="p-1.5 text-emerald-400 hover:bg-emerald-950/40 rounded transition-all"
-                            title="สลับคิว"><i class="fa-solid fa-rotate text-xs"></i></button>
-                        <button onclick="clearQueue()"
-                            class="p-1.5 text-red-400 hover:bg-red-950 rounded transition-all" title="ล้างคิว"><i
-                                class="fa-solid fa-trash-can text-xs"></i></button>
-                    </div>
-                </div>
+    <div class="flex items-center justify-between mb-1.5 shrink-0 px-1">
 
-                <div
-                    class="flex-1 flex flex-col min-h-0 bg-[#090d16]/90 rounded-lg border border-emerald-500/20 p-2 shadow-inner">
-                    <div class="flex-1 overflow-y-auto min-h-0 custom-scroll pr-1">
+        <h3 class="
+            text-[13px]
+            font-bold
+            text-white
+            flex
+            items-center
+            gap-2
+            neon-text-amber
+        ">
+            <i class="fa-solid fa-clipboard-list text-amber-500"></i>
+            คิวจัดส่ง
+        </h3>
 
-                        <div class="mb-2 shrink-0">
-                            <input
+        <div class="flex gap-1">
 
-    id="queue-search"
+            <button
+                onclick="optimizeNow()"
+                class="
+                    p-1.5
+                    text-cyan-400
+                    hover:bg-cyan-950/40
+                    rounded
+                    transition-all
+                "
+                title="จัดเรียงเส้นทาง"
+            >
+                <i class="fa-solid fa-route text-xs"></i>
+            </button>
 
-    type="text"
+            <button
+                onclick="reverseQueueDirection()"
+                class="
+                    p-1.5
+                    text-emerald-400
+                    hover:bg-emerald-950/40
+                    rounded
+                    transition-all
+                "
+                title="สลับคิว"
+            >
+                <i class="fa-solid fa-rotate text-xs"></i>
+            </button>
 
-    placeholder="ค้นหาเลขบ้านในคิว..."
+            <button
+                onclick="clearQueue()"
+                class="
+                    p-1.5
+                    text-red-400
+                    hover:bg-red-950
+                    rounded
+                    transition-all
+                "
+                title="ล้างคิว"
+            >
+                <i class="fa-solid fa-trash-can text-xs"></i>
+            </button>
 
-    class="
-        w-full
-        px-3
-        py-2
-        rounded-xl
-        bg-[#111827]
+        </div>
+
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="mb-2 shrink-0">
+
+        <input
+
+            id="queue-search"
+
+            type="text"
+
+            placeholder="ค้นหาเลขบ้านในคิว..."
+
+            class="
+                w-full
+                px-3
+                py-2
+                rounded-xl
+                bg-[#111827]
+                border
+                border-white/10
+                text-white
+                text-sm
+                outline-none
+            "
+        >
+
+    </div>
+
+    <!-- QUEUE BOX -->
+
+    <div class="
+        flex-1
+        flex
+        flex-col
+        min-h-0
+
+        bg-[#090d16]/90
+
+        rounded-lg
+
         border
-        border-white/10
-        text-white
-        text-sm
-        outline-none
-    "
->
-                        </div>
-                        <ul id="queue-list" class="text-[11px] p-0">
-                            <li class="text-slate-500 text-center py-6 text-[11px]">ยังไม่มีรายการคิว</li>
-                        </ul>
-                    </div>
+        border-emerald-500/20
 
-                    <button onclick="plotMarkers(null, false); map.setView([14.41, 101.70], 13);"
-                        class="w-full mt-2 bg-[#111827] border border-blue-500/40 text-blue-400 hover:bg-blue-950/50 py-1.5 rounded-md text-[11px] font-bold flex items-center justify-center gap-2 shrink-0 cursor-pointer">
-                        <i class="fa-solid fa-arrows-rotate"></i> รีเซ็ตแผนที่
-                    </button>
-                </div>
-            </div>
+        p-2
+
+        shadow-inner
+    ">
+
+        <div class="
+    flex-1
+    overflow-y-auto
+    min-h-0
+    pr-1
+">
+
+            <ul
+                id="queue-list"
+                class="text-[11px] p-0"
+            >
+                <li class="
+                    text-slate-500
+                    text-center
+                    py-6
+                    text-[11px]
+                ">
+                    ยังไม่มีรายการคิว
+                </li>
+            </ul>
+
+        </div>
+
+        <button
+
+            onclick="
+                plotMarkers(null, false);
+                map.setView([14.41, 101.70], 13);
+            "
+
+            class="
+                w-full
+                mt-2
+
+                bg-[#111827]
+
+                border
+                border-blue-500/40
+
+                text-blue-400
+
+                hover:bg-blue-950/50
+
+                py-1.5
+
+                rounded-md
+
+                text-[11px]
+                font-bold
+
+                flex
+                items-center
+                justify-center
+                gap-2
+
+                shrink-0
+
+                cursor-pointer
+            "
+        >
+
+            <i class="fa-solid fa-arrows-rotate"></i>
+
+            รีเซ็ตแผนที่
+
+        </button>
+
+    </div>
+
+</div>
 
         </div>
     </aside>
